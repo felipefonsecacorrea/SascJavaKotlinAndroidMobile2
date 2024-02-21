@@ -1,12 +1,14 @@
 package com.senai.vsconnect_kotlin.views
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import android.widget.Button
 import androidx.fragment.app.Fragment
 import com.senai.vsconnect_kotlin.R
 import com.senai.vsconnect_kotlin.apis.EndpointInterface
@@ -32,28 +34,60 @@ class EditarImagemFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
 
         _binding = FragmentEditarImagemBinding.inflate(inflater, container, false)
 
         val root: View = binding.root
 
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
-        val webView: WebView = root.findViewById(R.id.webCads)
-        webView.settings.javaScriptEnabled = true
+        val butaozao : Button = root.findViewById(R.id.button)
 
-        // Carrega o link do Power BI no WebView
-        val powerBiLink = "https://app.powerbi.com/reportEmbed?reportId=6010dfaf-b747-447d-84c4-e19dd7f6eac5&autoAuth=true&ctid=79553679-86d7-4827-88ba-d5dd74a01773"
-        webView.loadUrl(powerBiLink)
+        butaozao.setOnClickListener {
 
-        // Configura um WebViewClient para navegação dentro do WebView
-        webView.webViewClient = object : WebViewClient() {
-            override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
-                view?.loadUrl(url.toString())
-                return true
+            // Carrega o link do Power BI no WebView
+            val powerBiLink = "https://app.powerbi.com/links/tM5TVOqdEJ?ctid=79553679-86d7-4827-88ba-d5dd74a01773&pbi_source=linkShare&bookmarkGuid=371c1003-5ca0-41fa-a4ab-4cc5c25c708d"
+
+//            val powerBiLink = "com.microsoft.powerbimobile"
+//
+
+            val intent = Intent( Intent.ACTION_VIEW, Uri.parse(powerBiLink))
+            startActivity(intent)
+
+
+            // Adicionar a categoria CATEGORY_BROWSABLE para especificar o Chrome como o navegador preferido
+            intent.addCategory(Intent.CATEGORY_BROWSABLE)
+
+            // Adicionar a categoria CATEGORY_APP_BROWSER para especificar o Chrome como o navegador preferido
+            intent.addCategory(Intent.CATEGORY_APP_BROWSER)
+
+            // Verificar se há algum aplicativo disponível para lidar com a Intent
+            if (intent.resolveActivity(requireActivity().packageManager) != null) {
+                // Abrir o navegador com a URL especificada
+                startActivity(intent)
+            } else {
+                // Se não houver nenhum aplicativo disponível para lidar com a Intent
+                // Exibir uma mensagem de erro ou fazer outra ação, se necessário
             }
         }
+
+//        webView.loadUrl(powerBiLink)
+
+
+
+//        val webView: WebView = root.findViewById(R.id.webCads)
+//        webView.settings.javaScriptEnabled = true
+//
+//
+//
+//        // Configura um WebViewClient para navegação dentro do WebView
+//        webView.webViewClient = object : WebViewClient() {
+//            override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
+//                view?.loadUrl(url.toString())
+//                return true
+//            }
+//        }
 
         return root
     }

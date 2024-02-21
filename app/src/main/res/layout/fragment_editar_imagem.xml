@@ -4,11 +4,33 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="800dp"
         tools:context=".views.EditarImagemFragment"
         android:background="@color/white"
->
+        android:scrollbars="none"
+        android:scrollbarSize="0dp"
+        android:scrollbarAlwaysDrawVerticalTrack="false"
+        android:scrollbarStyle="insideOverlay"
+android:scrollbarThumbVertical="@drawable/style_card3"
+android:scrollbarTrackVertical="@drawable/style_card3">
 
+
+    <ImageView
+            android:src="@drawable/imgpowerbi2"
+            android:layout_width="414dp"
+            android:layout_height="800dp" android:id="@+id/imageView2"
+            tools:ignore="MissingConstraints"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0" app:layout_constraintVertical_bias="0.0"
+            android:layout_marginTop="10dp"/>
+    <Button android:layout_width="130dp" android:layout_height="67dp" android:text="ACESSAR"
+
+            android:id="@+id/button" android:background="@drawable/style_card2"
+            tools:ignore="MissingConstraints"
+            app:layout_constraintEnd_toEndOf="@+id/imageView2"
+            app:layout_constraintStart_toStartOf="@+id/imageView2" app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.492" android:layout_marginBottom="408dp"/>
     <TextView
             android:id="@+id/titulo_Cadastrar"
             android:layout_width="match_parent"
@@ -16,19 +38,11 @@
             android:textAlignment="center"
             android:textSize="30dp"
             android:text="Power BI"
-            android:textColor="#01B574"
+            android:textColor="#AED9A7"
             android:fontFamily="@font/titilliumweb_bold"
-
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="15dp"/>
-    <WebView
-            android:layout_width="409dp"
-            android:layout_height="668dp"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" android:id="@+id/webCads" android:layout_marginTop="15dp"
-            app:layout_constraintTop_toBottomOf="@+id/titulo_Cadastrar"/>
+            tools:ignore="MissingConstraints"
+            app:layout_constraintTop_toTopOf="@+id/imageView2" app:layout_constraintStart_toStartOf="@+id/imageView2"
+            app:layout_constraintBottom_toTopOf="@+id/button" app:layout_constraintVertical_bias="0.025"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
